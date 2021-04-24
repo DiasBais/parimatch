@@ -15,11 +15,11 @@
         </li>
         <li class="itemList">
           <img src="@/assets/score/money.png">
-          <span>{{ user.money }}</span>
+          <span>{{ user.money }} тг</span>
         </li>
         <li class="itemList">
           <img src="@/assets/score/bonus.png">
-          <span>{{ user.bonus }}</span>
+          <span>{{ user.bonus }} бонус</span>
         </li>
         <li class="nav-item dropdown itemList">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
