@@ -1,0 +1,56 @@
+.Menu {
+    background: #000;
+}
+
+.Menu .logotype {
+    margin-left: 35px;
+}
+
+.Menu .logotype img {
+    width: 100px;
+}
+
+.Menu ul {
+    margin-right: 35px;
+}
+
+.itemList span {
+    text-decoration: none;
+    color: #ff0;
+    font-family: "HELVETICA";
+    font-weight: bold;
+    font-size: 7px;
+}
+
+.itemList {
+    list-style: none;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.itemList a {
+    text-decoration: none;
+    color: #ff0;
+    font-family: "HELVETICA";
+    font-weight: bold;
+}
+
+.user select {
+    background-color: #000;
+    color: white;
+    padding: 12px;
+    height: 45px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    color: #ff0;
+}
+
+.user select option {
+    padding: 30px;
+    color: #ff0;
+}

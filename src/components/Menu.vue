@@ -1,10 +1,18 @@
 <template>
-  <div class="Menu">
-    <div class="logotype d-flex justify-content-start">
+  <div class="Menu d-flex justify-content-between">
+    <div class="logotype d-flex align-items-center">
       <img src="https://parimatch.kz/logos/pm-logo.svg">
     </div>
-    <div class="list d-flex justify-content-end">
+    <div class="list">
       <ul class="d-flex">
+        <li class="user itemList">
+          <select>
+            <option>User</option>
+            <option disabled>Bonus: {{ bonus[0] }}</option>
+            <option disabled>Money: {{ money[0] }}</option>
+            <option disabled>Level: {{ level[0] }}</option>
+          </select>
+        </li>
         <li class="itemList" v-for="item in menuList" :key="item">
           <router-link :to="'/'+item">{{ item }}</router-link>
         </li>
@@ -18,7 +26,10 @@ export default {
   name: 'Menu',
   data() {
     return {
-      menuList: [ 'Login', 'User', 'Signup', 'Logout' ],
+      bonus: [ 0, 'https://i.ibb.co/QQGvw10/achievement-1296732-640.png' ],
+      money: [ 0, 'https://i.ibb.co/bRk3tP5/coins-3344603-640.png' ],
+      level: [ 0, 'https://i.ibb.co/hsnsj15/1469840.png' ],
+      menuList: [ 'Login', 'Logout' ],
     }
   },
   mounted() {
@@ -39,22 +50,6 @@ export default {
 </script>
 
 <style>
-@import '../assets/style.css';
-
-.Menu {
-  background: #000;
-}
-
-.Menu .logotype img {
-  width: 100px;
-}
-
-.itemList {
-  list-style: none;
-}
-
-.itemList a {
-  text-decoration: none;
-}
+@import '../assets/Menu.css';
 
 </style>
