@@ -1,0 +1,84 @@
+.Login {
+    font-size: 15px;
+    font-family: LUCIDA SANS UNICODE;
+}
+
+.title {
+    font-size: 50px;
+    margin: 10px;
+    text-shadow: 0px 0px 4px #ff0;
+}
+
+.title span {
+    font-weight: bold;
+}
+
+.email {
+;
+}
+
+.password {
+;
+}
+
+input {
+    border: 0;
+    background-color: rgba(207, 207, 207, 0.1);
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+    font-family: 'LUCIDA SANS UNICODE';
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+.submit {
+    background: linear-gradient(to right, #ffff7f, #ff0);
+    padding-left: 50px;
+    padding-right: 50px;
+    font-family: 'LUCIDA SANS UNICODE';
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    box-shadow: 0px 0px 2px #ffff7f;
+}
+
+@media (max-width: 1070px) {
+    .Login .left {
+        width: 25%;
+    }
+    .Login .right {
+        width: 75%;
+    }
+}
+
+@media (max-width: 870px) {
+    .Login .left {
+        width: 100%;
+    }
+    .Login .right {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .Login .left .title {
+        font-size: 35px;
+    }
+    .Login .left input {
+        width: 85%;
+    }
+}
+
+@media (max-width: 300px) {
+    .Login .left .title {
+        font-size: 25px;
+    }
+    .Login .left input {
+        font-size: 10px;
+        width: 85%;
+    }
+}

@@ -1,6 +1,6 @@
 <template>
-  <div class="Login bg-black full-height d-flex" :style="'background-image: url(\'' + BGLink + '\'); background-size: 100% 100%;'">
-    <div class="w-35 d-flex" style="padding: 50px;">
+  <div class="Login bg-black full-height d-flex">
+    <div class="left w-35 d-flex justify-content-center" style="padding: 50px;">
       <div class="text-center" style="background: rgba(0, 0, 0, 0.5);">
         <div class="title">
           Welcome to <span>Parimatch</span>
@@ -18,9 +18,12 @@
             <input class="btn submit" type="submit" value="Sign Up">
           </div>
         </form>
+        <div id="alert">
+          {{ alert }}
+        </div>
       </div>
     </div>
-    <div class="w-65" style="padding-top: 50px;padding-left: 50px;padding-right: 50px;">
+    <div class="right w-65" style="padding-top: 50px;padding-left: 50px;padding-right: 50px;" :style="'background-image: url(' + BGLink + '); background-size: 100% 100%;'">
       <img :src="ImageCristianoRonaldo">
     </div>
   </div>
@@ -36,7 +39,8 @@ export default {
         password: null,
       },
       BGLink: 'https://i.ibb.co/PxTjMHB/smoke-2982431.jpg',
-      ImageCristianoRonaldo: 'https://i.ibb.co/p2mVR41/77-778425-cristiano-ronaldo-png-juventus-transparent-png-removebg-preview.png'
+      ImageCristianoRonaldo: 'https://i.ibb.co/p2mVR41/77-778425-cristiano-ronaldo-png-juventus-transparent-png-removebg-preview.png',
+      alert: '',
     }
   },
   mounted() {
@@ -49,7 +53,7 @@ export default {
         console.log(response.data)
         this.$session.set('user', response.data)
       }).catch(function (error) {
-        console.log(error.response.data.message)
+        console.log(error.message);
       });
     }
   }
@@ -57,53 +61,5 @@ export default {
 </script>
 
 <style>
-
-.Login {
-  font-size: 15px;
-  font-family: LUCIDA SANS UNICODE;
-}
-
-.title {
-  font-size: 50px;
-  margin: 10px;
-  text-shadow: 0px 0px 4px #ff0;
-}
-
-.title span {
-  font-weight: bold;
-}
-
-.email {
-  ;
-}
-
-.password {
-  ;
-}
-
-input {
-  border: 0;
-  background-color: rgba(86, 86, 86, 0.6);
-  color: #fff;
-  padding: 10px;
-  margin: 10px;
-  font-size: 15px;
-  font-family: 'LUCIDA SANS UNICODE';
-}
-
-input::placeholder {
-  color: #fff;
-}
-
-.submit {
-  background: linear-gradient(to right, #ffff7f, #ff0);
-  padding-left: 50px;
-  padding-right: 50px;
-  font-family: 'LUCIDA SANS UNICODE';
-  font-size: 13px;
-  font-weight: 600;
-  color: #000;
-  box-shadow: 0px 0px 2px #ffff7f;
-}
-
+@import '../assets/Login.css';
 </style>
