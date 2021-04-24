@@ -56,7 +56,7 @@
   export default {
     data() {
       return {
-        sdgfs: 'sdfhgnf'
+        bets: []
       }
     },
     mounted() {
@@ -77,37 +77,5 @@
 </script>
 
 <style>
-
-body {
-  background: #000;
-}
-
-.Home {
-  font-family: 'LUCIDA SANS UNICODE';
-}
-
-.Home th {
-  padding: 10px;
-  color: #3660f1;
-}
-
-.Home td {
-  padding: 10px;
-}
-
-.Home img {
-  width: 15px;
-  margin-right: 5px;
-}
-
-.Home .fteam {
-  width: 20px;
-  margin-right: 5px;
-}
-
-.Home .amount {
-  width: 25px;
-  margin-right: 5px;
-}
-
+@import '../assets/home.css';
 </style>
