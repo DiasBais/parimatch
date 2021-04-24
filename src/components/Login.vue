@@ -5,13 +5,13 @@
         <div class="title">
           Welcome to <span>Parimatch</span>
         </div>
-        <form class="" action="#">
+        <form class="" action="#" @submit.prevent="login()">
           <div class="">
             <div class="">
-              <input class="email btn w-50" type="text" placeholder="Email">
+              <input class="email btn w-50" type="text" placeholder="Email" v-model="form.email">
             </div>
             <div class="">
-              <input class="password btn w-50" type="text" placeholder="Password">
+              <input class="password btn w-50" type="text" placeholder="Password" v-model="form.password">
             </div>
           </div>
           <div class="submit-btn">
@@ -31,8 +31,26 @@ export default {
   name: 'Login',
   data() {
     return {
+      form: {
+        email: null,
+        password: null,
+      },
       BGLink: 'https://i.ibb.co/PxTjMHB/smoke-2982431.jpg',
       ImageCristianoRonaldo: 'https://i.ibb.co/p2mVR41/77-778425-cristiano-ronaldo-png-juventus-transparent-png-removebg-preview.png'
+    }
+  },
+  mounted() {
+    let user = (this.$session.get('user'))
+    console.log(user.name)
+  },
+  methods: {
+    login() {
+      this.$http.post('auth/login' , this.form).then((response) => {
+        console.log(response.data)
+        this.$session.set('user', response.data)
+      }).catch(function (error) {
+        console.log(error.response.data.message)
+      });
     }
   }
 }

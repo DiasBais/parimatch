@@ -9,6 +9,9 @@
 export default {
   name: 'App',
   components: {
+  },
+  created() {
+    this.$session.start()
   }
 }
 </script>
