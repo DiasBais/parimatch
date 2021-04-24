@@ -36,21 +36,14 @@
     font-weight: bold;
 }
 
-.user select {
-    background-color: #000;
-    color: white;
-    padding: 12px;
-    height: 45px;
-    border: none;
-    font-size: 20px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-    color: #ff0;
+.itemList img {
+    width: 40px;
+    margin-right: 10px;
 }
 
-.user select option {
-    padding: 30px;
-    color: #ff0;
+.itemList span {
+    font-family: "HELVETICA";
+    font-weight: bold;
+    font-size: 17px;
 }
+

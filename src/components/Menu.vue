@@ -5,13 +5,24 @@
     </div>
     <div class="list">
       <ul class="d-flex">
-        <li class="user itemList">
-          <select>
-            <option>User</option>
-            <option disabled>Bonus: {{ bonus[0] }}</option>
-            <option disabled>Money: {{ money[0] }}</option>
-            <option disabled>Level: {{ level[0] }}</option>
-          </select>
+        <li class="itemList">
+          <img :src="level.image">
+          <span>{{ level.value }}</span>
+        </li>
+        <li class="itemList">
+          <img :src="experience.image">
+          <span>{{ experience.value }} exp</span>
+        </li>
+        <li class="itemList">
+          <img :src="money.image">
+          <span>{{ money.value }}</span>
+        </li>
+        <li class="itemList">
+          <img :src="bonus.image">
+          <span>{{ bonus.value }}</span>
+        </li>
+        <li class="itemList">
+          <span>{{ user.name }}</span>
         </li>
         <li class="itemList" v-for="item in menuList" :key="item">
           <router-link :to="'/'+item">{{ item }}</router-link>
@@ -26,24 +37,26 @@ export default {
   name: 'Menu',
   data() {
     return {
-      bonus: [ 0, 'https://i.ibb.co/QQGvw10/achievement-1296732-640.png' ],
-      money: [ 0, 'https://i.ibb.co/bRk3tP5/coins-3344603-640.png' ],
-      level: [ 0, 'https://i.ibb.co/hsnsj15/1469840.png' ],
+      bonus: { value: 0, image: 'https://i.ibb.co/0tkkYym/images-removebg-preview.png' },
+      money: { value: 0, image: 'https://cdn0.iconfinder.com/data/icons/business-finance-vol-8-7/512/11-512.png' },
+      experience: { value: 0, image: 'https://i.ibb.co/QQGvw10/achievement-1296732-640.png' },
+      level: { value: 0, image: 'https://i.ibb.co/hsnsj15/1469840.png' },
       menuList: [ 'Login', 'Logout' ],
+      user: null,
     }
   },
   mounted() {
     let user = (this.$session.get('user'))
-    console.log(user.name)
+    this.user = user;
+    this.initScore();
   },
   methods: {
-    login() {
-      this.$http.post('auth/login' , this.form).then((response) => {
-        console.log(response.data)
-        this.$session.set('user', response.data)
-      }).catch(function (error) {
-        console.log(error.message);
-      });
+    initScore() {
+      let user = this.user;
+      this.bonus.value = user.bonus;
+      this.money.value = user.money;
+      this.experience.value = user.experience;
+      this.level.value = parseInt(user.experience / 1000);
     }
   }
 }

@@ -1,28 +1,55 @@
 <template>
-  <div class="bg-black">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Team A</th>
-        <th>Team B</th>
-        <th>Коэффициент</th>
-        <th>Ставка</th>
-        <th>Возможный выигрыш</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(bet, index) in bets" :key="index">
-        <td>{{index}}</td>
-        <td>{{bet.match.first_player}}</td>
-        <td>{{bet.match.second_player}}</td>
-        <td>{{bet.coefficient}}</td>
-        <td>{{bet.amount}} тг</td>
-        <td>{{bet.coefficient * bet.amount}} тг</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="Home">
+    <div class="d-flex justify-content-center m-5">
+      <table class="table" style="color: #ff0; background: #2d2d2d;">
+        <thead style="background: #1c1c1c;">
+          <tr>
+            <th>#</th>
+            <th>Team A</th>
+            <th>Team B</th>
+            <th>Коэффициент</th>
+            <th>Ставка</th>
+            <th>Возможный выигрыш</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(bet, index) in bets" :key="index">
+          <td>{{index}}</td>
+          <td>{{bet.match.first_player}}</td>
+          <td>{{bet.match.second_player}}</td>
+          <td>{{bet.coefficient}}</td>
+          <td>{{bet.amount}} тг</td>
+          <td>{{bet.coefficient * bet.amount}} тг</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <!--  -->
+<!--  <div class="bg-black">-->
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>#</th>-->
+<!--        <th>Team A</th>-->
+<!--        <th>Team B</th>-->
+<!--        <th>Коэффициент</th>-->
+<!--        <th>Ставка</th>-->
+<!--        <th>Возможный выигрыш</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr v-for="(bet, index) in bets" :key="index">-->
+<!--        <td>{{index}}</td>-->
+<!--        <td>{{bet.match.first_player}}</td>-->
+<!--        <td>{{bet.match.second_player}}</td>-->
+<!--        <td>{{bet.coefficient}}</td>-->
+<!--        <td>{{bet.amount}} тг</td>-->
+<!--        <td>{{bet.coefficient * bet.amount}} тг</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
 </template>
 
 <script>
@@ -48,3 +75,15 @@
     }
   }
 </script>
+
+<style>
+
+.Home th {
+  padding: 6px;
+}
+
+.Home td {
+  padding: 6px;
+}
+
+</style>
