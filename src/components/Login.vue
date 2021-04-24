@@ -6,21 +6,21 @@
           Welcome to <span>Parimatch</span>
         </div>
         <form class="" action="#" @submit.prevent="login()">
+          <div class="alert alert-warning" v-if="error">
+            {{error}}
+          </div>
           <div class="">
             <div class="">
-              <input class="email btn w-75 border" type="text" placeholder="Email" v-model="form.email">
+              <input class="email btn w-75 border" type="email" placeholder="Email" v-model="form.email" required>
             </div>
             <div class="">
-              <input class="password btn w-75 border" type="text" placeholder="Password" v-model="form.password">
+              <input class="password btn w-75 border" type="password" placeholder="Password" v-model="form.password" required>
             </div>
           </div>
           <div class="submit-btn">
             <input class="btn submit w-75" type="submit" value="Войти" style="font-size: 16px;">
           </div>
         </form>
-        <div id="alert">
-          {{ alert }}
-        </div>
       </div>
     </div>
     <div class="right w-65" style="padding-top: 50px;padding-left: 50px;padding-right: 50px;" :style="'background-image: url(' + BGLink + '); background-size: 100% 100%;'">
@@ -40,7 +40,7 @@ export default {
       },
       BGLink: 'https://i.ibb.co/PxTjMHB/smoke-2982431.jpg',
       ImageCristianoRonaldo: 'https://i.ibb.co/p2mVR41/77-778425-cristiano-ronaldo-png-juventus-transparent-png-removebg-preview.png',
-      alert: '',
+      error: null
     }
   },
   mounted() {
@@ -50,10 +50,10 @@ export default {
   methods: {
     login() {
       this.$http.post('auth/login' , this.form).then((response) => {
-        console.log(response.data)
-        this.$session.set('user', response.data)
-      }).catch(function (error) {
-        console.log(error.message);
+        this.$session.set('user', response.data);
+        location.href = '/';
+      }).catch(error => {
+        this.error = (error.response.data.message)
       });
     }
   }
