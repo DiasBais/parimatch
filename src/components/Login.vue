@@ -8,14 +8,14 @@
         <form class="" action="#" @submit.prevent="login()">
           <div class="">
             <div class="">
-              <input class="email btn w-50" type="text" placeholder="Email" v-model="form.email">
+              <input class="email btn w-75 border" type="text" placeholder="Email" v-model="form.email">
             </div>
             <div class="">
-              <input class="password btn w-50" type="text" placeholder="Password" v-model="form.password">
+              <input class="password btn w-75 border" type="text" placeholder="Password" v-model="form.password">
             </div>
           </div>
           <div class="submit-btn">
-            <input class="btn submit" type="submit" value="Sign Up">
+            <input class="btn submit w-75" type="submit" value="Войти" style="font-size: 16px;">
           </div>
         </form>
         <div id="alert">

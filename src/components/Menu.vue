@@ -1,31 +1,41 @@
 <template>
   <div class="Menu d-flex justify-content-between">
     <div class="logotype d-flex align-items-center">
-      <img src="https://parimatch.kz/logos/pm-logo.svg">
+      <img src="https://parimatch.kz/logos/pm-logo.svg" @click="$router.push('/')">
     </div>
-    <div class="list">
-      <ul class="d-flex">
+    <div class="list pt-3">
+      <ul class="d-flex" v-if="user">
         <li class="itemList">
-          <img :src="level.image">
-          <span>{{ level.value }}</span>
+          <img src="@/assets/score/level.png">
+          <span>{{ parseInt(user.experience / 1000) }} уровень</span>
         </li>
         <li class="itemList">
-          <img :src="experience.image">
-          <span>{{ experience.value }} exp</span>
+          <img src="@/assets/score/xp.png">
+          <span>{{ user.experience % 1000 }} exp</span>
         </li>
         <li class="itemList">
-          <img :src="money.image">
-          <span>{{ money.value }}</span>
+          <img src="@/assets/score/money.png">
+          <span>{{ user.money }}</span>
         </li>
         <li class="itemList">
-          <img :src="bonus.image">
-          <span>{{ bonus.value }}</span>
+          <img src="@/assets/score/bonus.png">
+          <span>{{ user.bonus }}</span>
         </li>
+        <li class="nav-item dropdown itemList">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user.name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" @click="logout()">
+            <router-link class="dropdown-item" to="#" style="color: #7d7c7c;">Выйти</router-link>
+          </div>
+        </li>
+      </ul>
+      <ul v-if="!user">
         <li class="itemList">
-          <span>{{ user.name }}</span>
-        </li>
-        <li class="itemList" v-for="item in menuList" :key="item">
-          <router-link :to="'/'+item">{{ item }}</router-link>
+          <router-link class="dropdown-item" to="/login">
+            <img src="@/assets/user.png">
+            Войти
+          </router-link>
         </li>
       </ul>
     </div>
@@ -37,26 +47,19 @@ export default {
   name: 'Menu',
   data() {
     return {
-      bonus: { value: 0, image: 'https://i.ibb.co/0tkkYym/images-removebg-preview.png' },
-      money: { value: 0, image: 'https://cdn0.iconfinder.com/data/icons/business-finance-vol-8-7/512/11-512.png' },
-      experience: { value: 0, image: 'https://i.ibb.co/QQGvw10/achievement-1296732-640.png' },
-      level: { value: 0, image: 'https://i.ibb.co/hsnsj15/1469840.png' },
       menuList: [ 'Login', 'Logout' ],
       user: null,
     }
   },
   mounted() {
-    let user = (this.$session.get('user'))
-    this.user = user;
-    this.initScore();
+    this.user = (this.$session.get('user'))
   },
   methods: {
-    initScore() {
-      let user = this.user;
-      this.bonus.value = user.bonus;
-      this.money.value = user.money;
-      this.experience.value = user.experience;
-      this.level.value = parseInt(user.experience / 1000);
+    logout() {
+      this.$session.destroy('user');
+      this.user = null;
+
+      this.$router.push('/login');
     }
   }
 }

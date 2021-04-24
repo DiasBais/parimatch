@@ -35,6 +35,10 @@ input::placeholder {
     color: #fff;
 }
 
+.btn {
+    color: #fff;
+}
+
 .submit {
     background: linear-gradient(to right, #ffff7f, #ff0);
     padding-left: 50px;
