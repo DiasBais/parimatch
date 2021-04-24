@@ -1,6 +1,6 @@
 <template>
   <div class="Home">
-    <div class="d-flex justify-content-center m-5">
+    <div class="justify-content-center m-5">
       <table class="table table-striped table-dark" style="color: #ff0; background: #2d2d2d;" v-if="bets.length > 0">
         <thead style="background: #1c1c1c;">
           <tr>
@@ -51,17 +51,25 @@
           </tr>
         </tbody>
       </table>
+
+      <Rating/>
+
     </div>
   </div>
 </template>
 
 <script>
+import Rating from '@/components/Rating.vue';
+
   export default {
     data() {
       return {
         bets: [],
         user: null,
       }
+    },
+    components: {
+      Rating,
     },
     mounted() {
       let user = this.$session.get('user');
