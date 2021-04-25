@@ -1,15 +1,15 @@
 <template>
   <div class="userProgress mb-3">
-    <div class="names d-flex justify-content-between">
-      <div>Зритель</div>
+    <div class="names d-flex justify-content-between mb-2">
+      <div class="font-weight-bold">Зритель</div>
       <div></div>
-      <div>Болельщик</div>
+      <div class="font-weight-bold">Болельщик</div>
       <div></div>
-      <div>Поклонник</div>
+      <div class="font-weight-bold mr-3">Поклонник</div>
       <div></div>
-      <div>Фанат</div>
+      <div class="font-weight-bold">Фанат</div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex px-2">
       <div class="viewer rounded-circle" :style="'border: 5px solid ' + colorLevel.viewer + '; background: ' + bgLevels.viewer + '; background-image: url(\'' + success.viewer + '\'); background-size: 85% 85%; background-position: center;'"></div>
       <hr class="liner">
       <div class="buff rounded-circle" :style="'border: 5px solid ' + colorLevel.buff + '; background: ' + bgLevels.buff + '; background-image: url(\'' + success.buff + '\'); background-size: 85% 85%; background-position: center;'"></div>
@@ -32,7 +32,7 @@ export default {
       successImage: 'https://i.ibb.co/LgW8LNv/success-icon.png',
       colorLevel: { 'viewer': this.colorNot, 'buff': this.colorNot, 'fans': this.colorNot, 'fan': this.colorNot },
       colorNot: '#919191',
-      colorBorder: '#0f0',
+      colorBorder: '#50fc50',
     }
   },
   components: {
@@ -83,12 +83,12 @@ export default {
 
 <style>
 .userProgress .names {
-  color: #ff0;
+  color: #3cfd3c;
   font-family: 'LUCIDA SANS UNICODE';
 }
 
 .userProgress .rounded-circle {
-  border: 5px solid #919191;
+  border: 5px solid #50fc50;
   background: #e9e9e9;
   width: 50px;
   height: 50px;

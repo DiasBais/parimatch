@@ -2,7 +2,7 @@
   <div class="Home">
     <div class="justify-content-center m-5">
 
-      <userProgress />
+      <userProgress class="mb-5" v-if="user"/>
 
       <Levels />
 
