@@ -1,6 +1,9 @@
 <template>
   <div class="Home">
     <div class="justify-content-center m-5">
+
+      <Levels />
+
       <table class="table table-striped table-dark" style="color: #ff0; background: #2d2d2d;" v-if="bets.length > 0">
         <thead style="background: #1c1c1c;">
           <tr>
@@ -60,6 +63,7 @@
 
 <script>
 import Rating from '@/components/Rating.vue';
+import Levels from '@/components/Levels.vue';
 
   export default {
     data() {
@@ -70,6 +74,7 @@ import Rating from '@/components/Rating.vue';
     },
     components: {
       Rating,
+      Levels,
     },
     mounted() {
       let user = this.$session.get('user');
