@@ -2,9 +2,11 @@
   <div class="Home">
     <div class="justify-content-center m-5">
 
+      <userProgress />
+
       <Levels />
 
-      <table class="table table-striped table-dark" style="color: #ff0; background: #2d2d2d;" v-if="bets.length > 0">
+      <table class="mt-5 table table-striped table-dark" style="color: #ff0; background: #2d2d2d;" v-if="bets.length > 0">
         <thead style="background: #1c1c1c;">
           <tr>
             <th>#</th>
@@ -64,6 +66,7 @@
 <script>
 import Rating from '@/components/Rating.vue';
 import Levels from '@/components/Levels.vue';
+import userProgress from '@/components/userProgress.vue';
 
   export default {
     data() {
@@ -75,6 +78,7 @@ import Levels from '@/components/Levels.vue';
     components: {
       Rating,
       Levels,
+      userProgress,
     },
     mounted() {
       let user = this.$session.get('user');
