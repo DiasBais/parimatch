@@ -1,5 +1,5 @@
 <template>
-  <div class="Menu d-flex justify-content-between">
+  <div class="Menu d-flex justify-content-between" style="border-bottom: 1px solid #ffcc00;">
     <div class="logotype d-flex align-items-center">
       <img src="https://parimatch.kz/logos/pm-logo.svg" @click="$router.push('/')">
     </div>
@@ -25,8 +25,11 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{user.name}}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" @click="logout()">
-            <router-link class="dropdown-item" to="#" style="color: #7d7c7c;">Выйти</router-link>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <router-link class="dropdown-item" to="/box" style="color: #7d7c7c;">Сундук</router-link>
+            <router-link class="dropdown-item" to="/logout" style="color: #7d7c7c;">
+              Выйти
+            </router-link>
           </div>
         </li>
       </ul>
@@ -48,17 +51,16 @@ export default {
   data() {
     return {
       menuList: [ 'Login', 'Logout' ],
-      user: null,
     }
   },
-  mounted() {
-    this.user = (this.$session.get('user'))
+  computed: {
+    user() {
+      return this.$session.get('user')
+    }
   },
   methods: {
     logout() {
       this.$session.destroy('user');
-      this.user = null;
-
       this.$router.push('/login');
     }
   }

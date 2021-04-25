@@ -3,9 +3,9 @@
     <img v-on:click="selectGift()" src="https://i.ibb.co/LkqYrdg/ezgif-6-187369f41544.gif" :style="'display: '+notSelectionImage">
     <img v-on:click="selectGift()" src="https://i.ibb.co/LkqYrdg/ezgif-6-187369f41544.gif" :style="'display: '+notSelectionImage">
     <img v-on:click="selectGift()" src="https://i.ibb.co/LkqYrdg/ezgif-6-187369f41544.gif" :style="'display: '+notSelectionImage">
-    <div class="win-gift" :style="'display: '+selectionImage">
+    <div class="win-gift col-md-6 text-center" :style="'display: '+selectionImage">
       <img src="https://i.ibb.co/yqNDpwY/depositphotos-9968145-stock-photo-open-gift-box-over-white-removebg-preview.png">
-      <span>{{ winned }}</span>
+      <span>{{ message }}</span>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     return {
       notSelectionImage: 'block',
       selectionImage: 'none',
-      winned: 'bonus 1500',
+      message: '',
     }
   },
   mounted() {
@@ -29,11 +29,12 @@ export default {
             this.$session.set('user', response.data.user);
             this.notSelectionImage = 'none';
             this.selectionImage = 'block';
-            this.winned = response.data.box.name + ' ' + response.data.box.value;
+            this.message = response.data.message;
+            setTimeout(() => location.href="/", 2000);
             console.log(response);
-          }, (error) => {
-            console.log(error);
-          });
+      }).catch((error) => {
+        alert(error.response.data.message);
+      });
     }
   }
 }
@@ -42,9 +43,6 @@ export default {
 <style>
 .gifts img {
   width: 200px;
-}
-.gifts .win-gift {
-  width: 250px;
 }
 .gifts .win-gift span {
   font-size: 25px;
